@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+{% if race %}
+  <h1>List of Units: {{ race.name|pluralize }}</h1>
+{% else %}
+  <p>{{race.name}}s</p>
+{% endif %}
+<div class="row" style="margin-top: 150px;"></div>
+<div class="row">
+  {% for unit in object_list %}
+    <div class="col-md-2">
+      <div class="card mb-4">
+        <img src="{{ unit.photo.url }}" class="card-img-top" alt="{{ unit.name }}">
+        <div class="card-body">
+          <h2 class="card-title">{{ unit.name }}</h2>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td>Attack:</td>
+                <td>{{ unit.attack }}</td>
+              </tr>
+              <tr>
+                <td>Health:</td>
+                <td>{{ unit.health }}</td>
+              </tr>
+              <tr>
+                <td>Defense:</td>
+                <td>{{ unit.defence|default_if_none:"0" }}</td>
+              </tr>
+              <tr>
+                <td>Speed:</td>
+                <td>{{ unit.speed }}</td>
+              </tr>
+              <tr>
+                <td>Mineral Cost:</td>
+                <td>{{ unit.mineral_cost }}</td>
+              </tr>
+              <tr>
+                <td>Gas Cost:</td>
+                <td>{{ unit.gas_cost }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    {% if forloop.counter|divisibleby:6 and not forloop.last %}
+      </div>
+      <div class="row">
+    {% endif %}
+  {% endfor %}
+</div>
+</div>
+{% endblock %}

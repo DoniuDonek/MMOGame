@@ -1,0 +1,85 @@
+body {
+    min-height: 75rem;
+    padding-top: 4.5rem;
+    }
+    h1 {
+    color: red;
+    }
+
+.centered-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px
+    }
+
+/* .top-bar {
+    display: flex;
+    justify-content: center;
+    }
+      
+.resource {
+    text-align: center;
+    margin: 0 10px;
+    } */
+
+    .top-bar {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        background-color: #0e1117;
+        border-top: 6px solid #6c8bbc;
+        border-bottom: 6px solid #6c8bbc;
+        padding: 10px 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 999;
+      }
+      
+      .resource {
+        text-align: center;
+        margin: 0 20px;
+        font-size: 16px;
+        color: #fff;
+      }
+      
+      .resource img {
+        width: 80px;
+        height: 80px;
+      }
+      
+      .resource p {
+        margin: 5px 0;
+      }
+      
+      /* Resource icons */
+      .resource img[src$="minerals.png"] {
+        content: url('{% static 'images/minerals.png' %}');
+      }
+      
+      .resource img[src$="gas.png"] {
+        content: url('{% static 'images/gas.png' %}');
+      }
+      
+      .resource img[src$="population.png"] {
+        content: url('{% static 'images/population.png' %}');
+      }
+    
+      .card-img-top {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        object-position: center;
+      }
+      
+      .table {
+        width: 100%;
+        margin-bottom: 0;
+      }
+      
+      .table td:first-child {
+        font-weight: bold;
+        width: 50%;
+      }

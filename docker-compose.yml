@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  web:
+    build: 
+      context: .
+    command: gunicorn SCOnline.wsgi -b 0.0.0.0:8000
+    volumes:
+      - ./static:/code/static
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment: 
+      - DJANGO_SECRET_KEY="WIERZCHU_WYMIARY_180X100X80X12CM"
+      - POSTGRES_ENGINE=django.db.backends.postgresql
+      - POSTGRES_DATABASE=sc-online-db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=sc-online-db
+
+volumes:
+  postgres_data:
